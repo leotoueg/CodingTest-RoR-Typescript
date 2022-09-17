@@ -8,10 +8,10 @@ class HomeController < ApplicationController
   end
 
   def edit_todo_item
-    @todo_item.update(todo_item_params)
+    Todo.where(:id => params[:id]).update_all(checked: params[:checked])
   end
 
-  def reset_todo_items
+  def reset_todo_item
     Todo.update_all(checked: false)
   end
 
